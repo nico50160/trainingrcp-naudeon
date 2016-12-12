@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Core
+Bundle-SymbolicName: com.opti.rental.core
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.opti.rental.core.RentalCoreActivator
+Bundle-Vendor: OPTI
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.common;bundle-version="2.12.0",
+ org.eclipse.emf.ecore;bundle-version="2.12.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-ClassPath: rental.jar,
+ .
+Export-Package: com.opcoach.training.rental
