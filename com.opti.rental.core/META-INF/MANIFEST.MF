@@ -12,4 +12,5 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: rental.jar,
  .
-Export-Package: com.opcoach.training.rental
+Export-Package: com.opcoach.training.rental,
+ com.opti.rental.core

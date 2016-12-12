@@ -16,7 +16,7 @@ public class RentalCoreActivator implements BundleActivator {
 		return context;
 	}
 
-	static RentalAgency getAgency() {
+	public static RentalAgency getAgency() {
 		return agency;
 	}
 	
