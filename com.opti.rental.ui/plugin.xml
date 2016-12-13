@@ -14,6 +14,13 @@
             name="Rental Property"
             restorable="true">
       </view>
+      <view
+            category="com.opti.rental.ui.category"
+            class="com.opti.rental.ui.views.RentalTreeView"
+            id="com.opti.rental.ui.RentalTreeView"
+            name="Rentals"
+            restorable="true">
+      </view>
    </extension>
 
 </plugin>
