@@ -10,6 +10,7 @@
       <view
             category="com.opti.rental.ui.category"
             class="com.opti.rental.ui.views.RentalPropertyView"
+            icon="icons/Rentals.png"
             id="com.opti.rental.ui.propertyView"
             name="Rental Property"
             restorable="true">
@@ -17,6 +18,7 @@
       <view
             category="com.opti.rental.ui.category"
             class="com.opti.rental.ui.views.RentalTreeView"
+            icon="icons/folder.png"
             id="com.opti.rental.ui.RentalTreeView"
             name="Rentals"
             restorable="true">
