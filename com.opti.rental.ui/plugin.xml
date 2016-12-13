@@ -22,5 +22,14 @@
             restorable="true">
       </view>
    </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.opti.rental.ui.perspective.RentalPerspective"
+            icon="icons/Agency.png"
+            id="com.opti.rental.ui.perspective.RentalPerspective"
+            name="Rental Perspective">
+      </perspective>
+   </extension>
 
 </plugin>
