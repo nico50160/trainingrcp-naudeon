@@ -24,7 +24,7 @@ public class RentalTreeView extends ViewPart {
 		List<RentalAgency> liste = new ArrayList<RentalAgency>();
 		liste.add(RentalCoreActivator.getAgency());
 		rentalTreeViewer.setInput(liste);
-		
+		getSite().setSelectionProvider(rentalTreeViewer);
 	}
 
 	@Override
