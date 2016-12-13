@@ -18,7 +18,11 @@ public class RentalPropertyView extends ViewPart {
 
 	private Label rentalObjectLabel;
 	private Label rentalOwnerLabel;
-		
+	private Group grpDateDeLocation;
+	
+	private Label lblStartDateValue;
+	private Label lblEndDateValue;
+	
 	public RentalPropertyView() {
 		// TODO Auto-generated constructor stub
 	}
@@ -29,6 +33,7 @@ public class RentalPropertyView extends ViewPart {
 		parent.setLayout(new GridLayout(1, false));
 		
 		Group infoGroup = new Group(parent, SWT.NONE);
+		infoGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		infoGroup.setText("Information");
 		infoGroup.setLayout(new GridLayout(2, false));
 		
@@ -37,12 +42,28 @@ public class RentalPropertyView extends ViewPart {
 		gd.horizontalSpan = 2;
 		gd.horizontalAlignment = SWT.FILL;
 		this.rentalObjectLabel.setLayoutData(gd);
-				
+		
+		Label lblOwnerLabel = new Label(infoGroup, SWT.NONE);
+		lblOwnerLabel.setText("Loué à :");
 		this.rentalOwnerLabel = new Label(infoGroup, SWT.NONE);
-		gd = new GridData();
-		gd.horizontalSpan = 2;
-		gd.horizontalAlignment = SWT.FILL;
-		this.rentalOwnerLabel.setLayoutData(gd);
+		
+		
+		grpDateDeLocation = new Group(parent, SWT.NONE);
+		grpDateDeLocation.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1));
+		grpDateDeLocation.setText("Date de location");
+		grpDateDeLocation.setLayout(new GridLayout(2, false));
+		
+		Label lblStartDateLabel = new Label(grpDateDeLocation, SWT.NONE);
+		lblStartDateLabel.setText("Du :");
+		
+		lblStartDateValue = new Label(grpDateDeLocation, SWT.NONE);
+		lblStartDateValue.setText("New Label");
+		
+		Label lblEndDateLabel = new Label(grpDateDeLocation, SWT.NONE);
+		lblEndDateLabel.setText("Au :");
+		
+		lblEndDateValue = new Label(grpDateDeLocation, SWT.NONE);
+	
 		this.setRental(RentalCoreActivator.getAgency().getRentals().get(0));
 		
 	}
@@ -56,6 +77,8 @@ public class RentalPropertyView extends ViewPart {
 	public void setRental(final Rental pRental) {
 		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		this.rentalObjectLabel.setText(pRental.getRentedObject().getName());
-		this.rentalOwnerLabel.setText(String.format("Loué à : %s", pRental.getCustomer().getDisplayName()));
+		this.rentalOwnerLabel.setText(pRental.getCustomer().getDisplayName());
+		this.lblStartDateValue.setText(df.format(pRental.getStartDate()));
+		this.lblEndDateValue.setText(df.format(pRental.getEndDate()));
 	}
 }
