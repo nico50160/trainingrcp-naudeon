@@ -7,9 +7,10 @@ import org.eclipse.jface.viewers.LabelProvider;
 
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.RentalAgency;
+import com.opcoach.training.rental.RentalObject;
 
 public class RentalProvider extends LabelProvider implements ITreeContentProvider {
-
+	
 	private static final Object[] EMPTY_RESULT = new Object[0];
 	
 	@Override
@@ -32,9 +33,11 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 		Object[] result = null;
 		
 		if (parentElement instanceof RentalAgency) {
-			final RentalAgency agency = (RentalAgency) parentElement;
-			result = agency.getCustomers().toArray();
+			result = new Node[] {new Node(NodeType.CUSTOMER, (RentalAgency) parentElement), new Node(NodeType.LOCATION, (RentalAgency) parentElement), new Node(NodeType.RENTAL_OBJECT, (RentalAgency) parentElement)};
+		} else if (parentElement instanceof Node) {
+			result = ((Node) parentElement).getChildren();
 		}
+		
 		return (null == result) ? EMPTY_RESULT : result;
 	}
 
@@ -46,14 +49,7 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 
 	@Override
 	public boolean hasChildren(Object element) {
-		boolean result = false;
-		if (element instanceof RentalAgency) {
-			final RentalAgency agency = (RentalAgency) element;
-			if (null != agency.getCustomers() && (!agency.getCustomers().isEmpty())) {
-				result = true;
-			}
-		}
-		return result;
+		return (element instanceof Node || element instanceof RentalAgency);
 	}
 
 	@Override
@@ -62,8 +58,63 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			return ((RentalAgency) element).getName();
 		} else if (element instanceof Customer) {
 			return ((Customer) element).getDisplayName();
-		}
+		} else if (element instanceof RentalObject) {
+			return ((RentalObject) element).getName();
+		} 
 		return super.getText(element);
 	}
 
+	public enum NodeType {
+		
+		CUSTOMER("Client"),
+		LOCATION("Locations"),
+		RENTAL_OBJECT("Objets à louer");
+		
+		private String label;
+		
+		private NodeType(final String pLabel) {
+			label = pLabel;
+		}
+		
+		public String getLabel() {
+			return this.label;
+		}
+	}
+	
+	public class Node {
+		
+		private NodeType type;
+		private RentalAgency agency;
+		
+		public Node(NodeType type, RentalAgency agency) {
+			super();
+			this.type = type;
+			this.agency = agency;
+		}
+		
+		public Object[] getChildren() {
+			Object[] result = null;
+			switch (this.type) {
+			case CUSTOMER:
+				result = this.agency.getCustomers().toArray();
+				break;
+			case LOCATION:
+				result = this.agency.getRentals().toArray();
+				break;
+			case RENTAL_OBJECT:
+				result = this.agency.getObjectsToRent().toArray();
+				break;
+			default:
+				result = EMPTY_RESULT;
+			}
+			return (null == result) ? EMPTY_RESULT : result;
+		}
+
+		@Override
+		public String toString() {
+			return this.type.getLabel();
+		}
+		
+		
+	}
 }
