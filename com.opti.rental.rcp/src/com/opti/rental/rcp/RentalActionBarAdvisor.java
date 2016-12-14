@@ -1,0 +1,82 @@
+package com.opti.rental.rcp;
+
+import org.eclipse.jface.action.ICoolBarManager;
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.application.ActionBarAdvisor;
+import org.eclipse.ui.application.IActionBarConfigurer;
+import org.eclipse.jface.action.MenuManager;
+import org.eclipse.jface.action.IAction;
+import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.jface.action.ToolBarManager;
+
+public class RentalActionBarAdvisor extends ActionBarAdvisor {
+	private IAction quitAction;
+	private IAction preferencesAction;
+	private IAction preferencesAction_1;
+	private IAction helpContentsAction;
+	private IAction introAction;
+	private IAction aboutAction;
+
+	public RentalActionBarAdvisor(IActionBarConfigurer configurer) {
+		super(configurer);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	protected void makeActions(IWorkbenchWindow window) {
+		// TODO Auto-generated method stub
+		super.makeActions(window);
+		{
+			quitAction = ActionFactory.QUIT.create(window);
+			register(quitAction);
+		}
+		{
+			preferencesAction = ActionFactory.PREFERENCES.create(window);
+			register(preferencesAction);
+		}
+		{
+			preferencesAction_1 = ActionFactory.PREFERENCES.create(window);
+			register(preferencesAction_1);
+		}
+		{
+			helpContentsAction = ActionFactory.HELP_CONTENTS.create(window);
+			register(helpContentsAction);
+		}
+		{
+			introAction = ActionFactory.INTRO.create(window);
+			register(introAction);
+		}
+		{
+			aboutAction = ActionFactory.ABOUT.create(window);
+			register(aboutAction);
+		}
+	}
+
+	@Override
+	protected void fillMenuBar(IMenuManager menuBar) {
+		// TODO Auto-generated method stub
+		super.fillMenuBar(menuBar);
+		
+		MenuManager menuManager = new MenuManager("New MenuManager");
+		menuManager.setMenuText("File");
+		menuBar.add(menuManager);
+		menuManager.add(quitAction);
+		
+		MenuManager menuManager_1 = new MenuManager("New MenuManager");
+		menuManager_1.setMenuText("Windows");
+		menuBar.add(menuManager_1);
+		menuManager_1.add(preferencesAction);
+	}
+
+	@Override
+	protected void fillCoolBar(ICoolBarManager coolBar) {
+		// TODO Auto-generated method stub
+		super.fillCoolBar(coolBar);
+		
+		ToolBarManager toolBarManager = new ToolBarManager();
+		coolBar.add(toolBarManager);
+		toolBarManager.add(helpContentsAction);
+	}
+
+}
