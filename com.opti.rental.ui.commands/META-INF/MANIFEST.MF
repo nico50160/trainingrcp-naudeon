@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Commands
+Bundle-SymbolicName: com.opti.rental.ui.commands;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: OPTI
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: com.opti.rental.core;bundle-version="1.0.0",
+ com.opti.rental.ui;bundle-version="1.0.0",
+ org.eclipse.ui;bundle-version="3.108.0"
