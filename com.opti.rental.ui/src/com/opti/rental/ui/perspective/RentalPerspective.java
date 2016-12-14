@@ -21,7 +21,11 @@ public class RentalPerspective implements IPerspectiveFactory {
 			IFolderLayout folderLayout = layout.createFolder("folder", IPageLayout.LEFT, 0.5f, IPageLayout.ID_EDITOR_AREA);
 			folderLayout.addView("com.opti.rental.ui.RentalTreeView");
 		}
-		layout.addView("com.opti.rental.ui.propertyView", IPageLayout.BOTTOM, 0.5f, "folder");
+		{
+			IFolderLayout folderLayout = layout.createFolder("folder_1", IPageLayout.BOTTOM, 0.5f, "folder");
+			folderLayout.addView("com.opti.rental.ui.propertyView");
+			folderLayout.addView("com.opti.rental.ui.customer");
+		}
 	}
 
 	/**

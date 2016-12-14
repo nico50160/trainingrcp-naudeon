@@ -23,6 +23,14 @@
             name="%view.name.0"
             restorable="true">
       </view>
+      <view
+            category="com.opti.rental.ui.category"
+            class="com.opti.rental.ui.views.CustomerView"
+            icon="icons/Customers.png"
+            id="com.opti.rental.ui.customer"
+            name="%view.name.1"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.ui.perspectives">
