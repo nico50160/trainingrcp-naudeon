@@ -1,8 +1,6 @@
 package com.opti.rental.ui.views;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
@@ -24,7 +22,6 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
 
 import com.opcoach.training.rental.Customer;
-import com.opcoach.training.rental.Rental;
 import com.opti.rental.core.RentalCoreActivator;
 
 public class CustomerView extends ViewPart implements ISelectionListener {
@@ -87,8 +84,11 @@ public class CustomerView extends ViewPart implements ISelectionListener {
 	
 		if (selection instanceof IStructuredSelection) {
 			final Object selected = ((IStructuredSelection) selection).getFirstElement();
-			if (null != selected && selected instanceof Customer) {
-				this.setCustomer((Customer) selected);
+			if (null != selected) {
+				Customer customer = Platform.getAdapterManager().getAdapter(selected, Customer.class);
+				if (null != customer) {
+					this.setCustomer(customer);
+				}
 			}
 		}
 		
