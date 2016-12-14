@@ -5,14 +5,14 @@
          point="org.eclipse.ui.views">
       <category
             id="com.opti.rental.ui.category"
-            name="Rental">
+            name="%category.name">
       </category>
       <view
             category="com.opti.rental.ui.category"
             class="com.opti.rental.ui.views.RentalPropertyView"
             icon="icons/Rentals.png"
             id="com.opti.rental.ui.propertyView"
-            name="Rental Property"
+            name="%view.name"
             restorable="true">
       </view>
       <view
@@ -20,7 +20,7 @@
             class="com.opti.rental.ui.views.RentalTreeView"
             icon="icons/folder.png"
             id="com.opti.rental.ui.RentalTreeView"
-            name="Rentals"
+            name="%view.name.0"
             restorable="true">
       </view>
    </extension>
@@ -30,7 +30,7 @@
             class="com.opti.rental.ui.perspective.RentalPerspective"
             icon="icons/Agency.png"
             id="com.opti.rental.ui.perspective.RentalPerspective"
-            name="Rental Perspective">
+            name="%perspective.name">
       </perspective>
    </extension>
    <extension
@@ -38,7 +38,7 @@
       <page
             class="com.opti.rental.ui.preferences.RentalColorPreferencePage"
             id="com.opti.rental.ui.colorprefpage"
-            name="Colors">
+            name="%page.name">
       </page>
    </extension>
    <extension
@@ -51,7 +51,7 @@
          point="org.eclipse.ui.commands">
       <command
             id="com.opti.rental.ui.helloword"
-            name="Hello Word">
+            name="%command.name">
       </command>
    </extension>
    <extension
@@ -67,10 +67,10 @@
             allPopups="false"
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
-               label="Texte">
+               label="%menu.label">
             <command
                   commandId="com.opti.rental.ui.helloword"
-                  label="Hello word"
+                  label="%command.label"
                   style="push">
             </command>
          </menu>
@@ -79,10 +79,10 @@
             allPopups="false"
             locationURI="menu:org.eclipse.ui.navigator.ProjectExplorer?after=additions">
          <menu
-               label="Texte">
+               label="%menu.label.0">
             <command
                   commandId="com.opti.rental.ui.helloword"
-                  label="Hello word"
+                  label="%command.label.0"
                   style="push">
             </command>
          </menu>
@@ -92,7 +92,7 @@
             locationURI="popup:com.opti.rental.ui.RentalTreeView?after=additions">
          <command
                commandId="com.opti.rental.ui.helloword"
-               label="Hello Word"
+               label="%command.label.1"
                style="push">
          </command>
       </menuContribution>
