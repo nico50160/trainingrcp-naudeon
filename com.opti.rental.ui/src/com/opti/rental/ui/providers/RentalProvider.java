@@ -2,13 +2,14 @@ package com.opti.rental.ui.providers;
 
 import java.util.List;
 
+import org.eclipse.jface.resource.ColorRegistry;
+import org.eclipse.jface.resource.JFaceResources;
+import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Display;
 
 import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.Rental;
@@ -74,11 +75,11 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	public Color getForeground(Object element) {
 		Color result = null;
 		if (element instanceof Rental) {
-			result = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_BLUE);
+			result = this.getColorFromString(RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_RENTAL_COLOR));
 		} else if (element instanceof Customer) {
-			result = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_CYAN);
+			result = this.getColorFromString(RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_CUSTOMER_COLOR));
 		} else if (element instanceof RentalObject) {
-			result = Display.getCurrent().getSystemColor(SWT.COLOR_DARK_RED);
+			result = this.getColorFromString(RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_RENTAL_OBJECT_COLOR));
 		} 
 		return result;
 	}
@@ -106,7 +107,16 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 		return super.getImage(element);
 	}
 
-
+	private Color getColorFromString(final String pRGBKey) {
+		ColorRegistry colorRegistry = JFaceResources.getColorRegistry();
+		Color col = colorRegistry.get(pRGBKey);
+		if (null == col) {
+			colorRegistry.put(pRGBKey, StringConverter.asRGB(pRGBKey));
+			col = colorRegistry.get(pRGBKey);
+		}
+		return col;
+	}
+	
 	public enum NodeType {
 		
 		CUSTOMER("Client"),
@@ -156,6 +166,41 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 		@Override
 		public String toString() {
 			return this.type.getLabel();
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + getOuterType().hashCode();
+			result = prime * result + ((agency == null) ? 0 : agency.hashCode());
+			result = prime * result + ((type == null) ? 0 : type.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			Node other = (Node) obj;
+			if (!getOuterType().equals(other.getOuterType()))
+				return false;
+			if (agency == null) {
+				if (other.agency != null)
+					return false;
+			} else if (!agency.equals(other.agency))
+				return false;
+			if (type != other.type)
+				return false;
+			return true;
+		}
+
+		private RentalProvider getOuterType() {
+			return RentalProvider.this;
 		}
 		
 		
