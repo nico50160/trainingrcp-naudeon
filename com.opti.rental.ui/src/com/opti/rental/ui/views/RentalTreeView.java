@@ -3,10 +3,12 @@ package com.opti.rental.ui.views;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IViewSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.part.ViewPart;
@@ -44,6 +46,12 @@ public class RentalTreeView extends ViewPart implements IPropertyChangeListener 
 		liste.add(RentalCoreActivator.getAgency());
 		rentalTreeViewer.setInput(liste);
 		getSite().setSelectionProvider(rentalTreeViewer);
+		
+		MenuManager menuManager = new MenuManager();
+		Menu menu = menuManager.createContextMenu(rentalTreeViewer.getControl());
+		rentalTreeViewer.getControl().setMenu(menu);
+		getSite().registerContextMenu(menuManager, rentalTreeViewer);
+		
 	}
 
 	@Override
