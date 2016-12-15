@@ -16,7 +16,6 @@ public class RentalActionBarAdvisor extends ActionBarAdvisor {
 	private IAction preferencesAction_1;
 	private IAction helpContentsAction;
 	private IAction introAction;
-	private IAction aboutAction;
 
 	public RentalActionBarAdvisor(IActionBarConfigurer configurer) {
 		super(configurer);
@@ -42,14 +41,6 @@ public class RentalActionBarAdvisor extends ActionBarAdvisor {
 		{
 			helpContentsAction = ActionFactory.HELP_CONTENTS.create(window);
 			register(helpContentsAction);
-		}
-		{
-			introAction = ActionFactory.INTRO.create(window);
-			register(introAction);
-		}
-		{
-			aboutAction = ActionFactory.ABOUT.create(window);
-			register(aboutAction);
 		}
 	}
 

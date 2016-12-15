@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<fragment>
+   <extension
+         point="org.eclipse.rap.ui.entrypoint">
+      <entrypoint
+            applicationId="com.opti.rental.rcp.application"
+            brandingId="org.eclipse.rap.design.example.business.branding"
+            id="com.opti.rental.rcp.rap.entrypoint1"
+            path="/rental">
+      </entrypoint>
+   </extension>
+
+</fragment>

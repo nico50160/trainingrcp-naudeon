@@ -5,6 +5,7 @@ import java.util.List;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 
@@ -17,6 +18,11 @@ import com.opti.rental.ui.RentalUIActivator;
 import com.opti.rental.ui.RentalUIConstants;
 
 public class RentalProvider extends LabelProvider implements ITreeContentProvider, IColorProvider, RentalUIConstants {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3157281591174406098L;
 	
 	private static final Object[] EMPTY_RESULT = new Object[0];
 		
@@ -197,6 +203,12 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			return RentalProvider.this;
 		}
 		
+		
+	}
+
+	@Override
+	public void inputChanged(Viewer viewer, Object oldInput, Object newInput) {
+		// TODO Auto-generated method stub
 		
 	}
 
