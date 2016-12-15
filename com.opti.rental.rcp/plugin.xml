@@ -16,10 +16,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.opti.rental.rcp.application"
-            name="Rental RCP">
+            name="Rental">
          <property
-               name="windowImages"
-               value="icons/eclipse16.png,icons/eclipse32.png,icons/eclipse48.png,icons/eclipse64.png, icons/eclipse128.png,icons/eclipse256.png,icons/eclipse512.png">
+               name="appName"
+               value="Rental">
          </property>
       </product>
    </extension>
