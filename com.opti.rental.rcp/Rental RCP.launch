@@ -6,7 +6,7 @@
 <booleanAttribute key="automaticAdd" value="false"/>
 <booleanAttribute key="automaticValidate" value="false"/>
 <stringAttribute key="bootstrap" value=""/>
-<stringAttribute key="checked" value="org.eclipse.core.expressions"/>
+<stringAttribute key="checked" value="[NONE]"/>
 <booleanAttribute key="clearConfig" value="false"/>
 <booleanAttribute key="clearws" value="false"/>
 <booleanAttribute key="clearwslog" value="false"/>
@@ -28,7 +28,7 @@
 <stringAttribute key="selected_workspace_plugins" value="com.opti.rental..help@default:default,com.opti.rental.core.adapters@default:true,com.opti.rental.core@default:default,com.opti.rental.rcp@default:default,com.opti.rental.ui.commands@default:default,com.opti.rental.ui.es@default:false,com.opti.rental.ui@default:default"/>
 <booleanAttribute key="show_selected_only" value="false"/>
 <stringAttribute key="templateConfig" value="${target_home}\configuration\config.ini"/>
-<booleanAttribute key="tracing" value="true"/>
+<booleanAttribute key="tracing" value="false"/>
 <mapAttribute key="tracingOptions">
 <mapEntry key="org.eclipse.core.contenttype/debug" value="false"/>
 <mapEntry key="org.eclipse.core.expressions/debug/TypeExtensionManager" value="false"/>

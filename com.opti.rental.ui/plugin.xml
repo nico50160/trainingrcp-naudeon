@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
+   <extension-point id="palettes" name="Palettes" schema="schema/palettes.exsd"/>
    <extension
          point="org.eclipse.ui.views">
       <category
@@ -104,6 +105,19 @@
                style="push">
          </command>
       </menuContribution>
+   </extension>
+   <extension
+         point="com.opti.rental.ui.palettes">
+      <palette
+            id="com.opti.rental.ui.palettedefault"
+            name="Default"
+            paletteClasse="com.opti.rental.ui.palette.DefaultPalette">
+      </palette>
+      <palette
+            id="com.opti.rental.ui.bluepalette"
+            name="Blue"
+            paletteClasse="com.opti.rental.ui.palette.BluePalette">
+      </palette>
    </extension>
 
 </plugin>
