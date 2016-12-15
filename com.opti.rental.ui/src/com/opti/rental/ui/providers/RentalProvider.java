@@ -19,7 +19,7 @@ import com.opti.rental.ui.RentalUIConstants;
 public class RentalProvider extends LabelProvider implements ITreeContentProvider, IColorProvider, RentalUIConstants {
 	
 	private static final Object[] EMPTY_RESULT = new Object[0];
-	
+		
 	@Override
 	public Object[] getElements(Object inputElement) {
 		
