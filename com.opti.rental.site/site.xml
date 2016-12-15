@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.opti.rental.feature_1.0.0.201612151227.jar" id="com.opti.rental.feature" version="1.0.0.201612151227">
+      <category name="com.opti.rental"/>
+   </feature>
+   <category-def name="com.opti.rental" label="Rental"/>
+</site>
