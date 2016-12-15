@@ -45,9 +45,15 @@
    <extension
          point="org.eclipse.ui.preferencePages">
       <page
-            class="com.opti.rental.ui.preferences.RentalColorPreferencePage"
+            category="com.opti.rental.ui.palettePref"
+            class="com.opti.rental.ui.preferences.RentalDefaultColorPreferencePage"
             id="com.opti.rental.ui.colorprefpage"
             name="%page.name">
+      </page>
+      <page
+            class="com.opti.rental.ui.preferences.RentalPaletteColorPreferences"
+            id="com.opti.rental.ui.palettePref"
+            name="Palettes">
       </page>
    </extension>
    <extension

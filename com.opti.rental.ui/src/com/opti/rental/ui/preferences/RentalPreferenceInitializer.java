@@ -17,6 +17,8 @@ public class RentalPreferenceInitializer extends AbstractPreferenceInitializer i
 		store.setDefault(PREF_CUSTOMER_COLOR, StringConverter.asString(Display.getCurrent().getSystemColor(SWT.COLOR_DARK_BLUE).getRGB()));
 		store.setDefault(PREF_RENTAL_COLOR, StringConverter.asString(Display.getCurrent().getSystemColor(SWT.COLOR_DARK_CYAN).getRGB()));
 		store.setDefault(PREF_RENTAL_OBJECT_COLOR, StringConverter.asString(Display.getCurrent().getSystemColor(SWT.COLOR_DARK_GRAY).getRGB()));
+		
+		store.setDefault(PREF_PALETTE, "com.opti.rental.ui.palettedefault");
 	}
 
 }

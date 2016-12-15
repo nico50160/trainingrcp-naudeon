@@ -8,9 +8,9 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import com.opti.rental.ui.RentalUIActivator;
 import com.opti.rental.ui.RentalUIConstants;
 
-public class RentalColorPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage, RentalUIConstants {
+public class RentalDefaultColorPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage, RentalUIConstants {
 
-	public RentalColorPreferencePage() {
+	public RentalDefaultColorPreferencePage() {
 		super(GRID);
 		setPreferenceStore(RentalUIActivator.getDefault().getPreferenceStore());
 		setDescription("Gestion des couleurs");
@@ -18,6 +18,7 @@ public class RentalColorPreferencePage extends FieldEditorPreferencePage impleme
 
 	@Override
 	protected void createFieldEditors() {
+		
 		addField(new ColorFieldEditor(PREF_CUSTOMER_COLOR, "Couleur des clients :", getFieldEditorParent()));
 		addField(new ColorFieldEditor(PREF_RENTAL_OBJECT_COLOR, "Couleur des objets à louer :", getFieldEditorParent()));
 		addField(new ColorFieldEditor(PREF_RENTAL_COLOR, "Couleur des locations :", getFieldEditorParent()));

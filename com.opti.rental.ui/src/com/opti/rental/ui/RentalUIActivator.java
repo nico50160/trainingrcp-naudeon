@@ -63,6 +63,10 @@ public class RentalUIActivator extends AbstractUIPlugin implements RentalUIConst
 		return plugin;
 	}
 
+	public Map<String, Palette> getPaletteManager() {
+		return this.palettes;
+	}
+	
 	@Override
 	protected void initializeImageRegistry(ImageRegistry reg) {
 		Bundle b = FrameworkUtil.getBundle(this.getClass());

@@ -2,9 +2,6 @@ package com.opti.rental.ui.providers;
 
 import java.util.List;
 
-import org.eclipse.jface.resource.ColorRegistry;
-import org.eclipse.jface.resource.JFaceResources;
-import org.eclipse.jface.resource.StringConverter;
 import org.eclipse.jface.viewers.IColorProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -15,6 +12,7 @@ import com.opcoach.training.rental.Customer;
 import com.opcoach.training.rental.Rental;
 import com.opcoach.training.rental.RentalAgency;
 import com.opcoach.training.rental.RentalObject;
+import com.opti.rental.ui.Palette;
 import com.opti.rental.ui.RentalUIActivator;
 import com.opti.rental.ui.RentalUIConstants;
 
@@ -74,22 +72,28 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 	@Override
 	public Color getForeground(Object element) {
 		Color result = null;
-		if (element instanceof Rental) {
-			result = this.getColorFromString(RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_RENTAL_COLOR));
-		} else if (element instanceof Customer) {
-			result = this.getColorFromString(RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_CUSTOMER_COLOR));
-		} else if (element instanceof RentalObject) {
-			result = this.getColorFromString(RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_RENTAL_OBJECT_COLOR));
-		} 
+		final String paletteId = RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_PALETTE);
+		if (null != paletteId) {
+			final Palette palette = RentalUIActivator.getDefault().getPaletteManager().get(paletteId);
+			if (null != palette) {
+				result = palette.getProvider().getForeground(element);
+			}
+		}
 		return result;
 	}
 
 	@Override
 	public Color getBackground(Object element) {
-		// TODO Auto-generated method stub
-		return null;
+		Color result = null;
+		final String paletteId = RentalUIActivator.getDefault().getPreferenceStore().getString(PREF_PALETTE);
+		if (null != paletteId) {
+			final Palette palette = RentalUIActivator.getDefault().getPaletteManager().get(paletteId);
+			if (null != palette) {
+				result = palette.getProvider().getBackground(element);
+			}
+		}
+		return result;
 	}
-	
 	
 	@Override
 	public Image getImage(Object element) {
@@ -105,16 +109,6 @@ public class RentalProvider extends LabelProvider implements ITreeContentProvide
 			return RentalUIActivator.getDefault().getImageRegistry().get(IMG_NODE);
 		}
 		return super.getImage(element);
-	}
-
-	private Color getColorFromString(final String pRGBKey) {
-		ColorRegistry colorRegistry = JFaceResources.getColorRegistry();
-		Color col = colorRegistry.get(pRGBKey);
-		if (null == col) {
-			colorRegistry.put(pRGBKey, StringConverter.asRGB(pRGBKey));
-			col = colorRegistry.get(pRGBKey);
-		}
-		return col;
 	}
 	
 	public enum NodeType {
